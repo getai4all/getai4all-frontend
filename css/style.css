@@ -1,0 +1,2121 @@
+/* Grundlegende Stil-Regeln für die gesamte Seite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #e0e0e0; /* Hellere Textfarbe für dunklen Hintergrund */
+    background-color: #1a202c; /* Hintergrundfarbe, passend zu deinen Bildern */
+    overflow-x: hidden; /* Verhindert horizontales Scrollen durch falsche Breiten */
+}
+
+/* Hilfsklassen */
+.container {
+    max-width: 1200px; /* Maximale Breite des Inhalts */
+    margin: 0 auto; /* Zentriert den Container */
+    padding: 0 20px; /* Innenabstand an den Seiten */
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Header Styling */
+.main-header {
+    background-color: #111; /* Dunklerer Hintergrund für den Header */
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Leichter Schatten */
+    position: fixed; /* Header bleibt oben beim Scrollen */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Stellt sicher, dass der Header oben liegt */
+}
+
+.navbar {
+    display: flex; /* Flexbox für nebeneinanderliegende Elemente */
+    justify-content: space-between; /* Logo links, Links rechts */
+    align-items: center; /* Vertikal zentriert */
+}
+
+.logo {
+    color: #00B8D4; /* getAl4all Logo-Farbe, Türkis/Cyan */
+    font-size: 2.2em; /* Größe des Logos */
+    font-weight: 700; /* Fetter */
+    text-decoration: none; /* Unterstreichung entfernen */
+    letter-spacing: 1px; /* Etwas Abstand zwischen Buchstaben */
+}
+
+.nav-links {
+    list-style: none; /* Punkte bei Liste entfernen */
+    display: flex; /* Links nebeneinander */
+    gap: 30px; /* Abstand zwischen den Links */
+}
+
+.nav-links li a {
+    color: #e0e0e0; /* Farbe der Navigationslinks */
+    text-decoration: none; /* Unterstreichung entfernen */
+    font-weight: 400;
+    font-size: 1.1em;
+    transition: color 0.3s ease; /* Sanfter Farbwechsel beim Hover */
+}
+
+.nav-links li a:hover {
+    color: #00B8D4; /* Farbe beim Hover, Türkis/Cyan */
+}
+
+/* Mobile Menu Toggle (Hamburger Icon) */
+.menu-toggle {
+    display: none; /* Standardmäßig versteckt auf größeren Bildschirmen */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Styling für das Hamburger-Icon bei Klick (wird später mit JS gesteuert) */
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Hero Section Styling (für Startseite) */
+.hero {
+    min-height: 100vh; /* Nimmt die gesamte Bildschirmhöhe ein */
+    display: flex;
+    align-items: center; /* Inhalt vertikal zentrieren */
+    justify-content: center; /* Inhalt horizontal zentrieren */
+    text-align: center; /* Text zentrieren */
+    position: relative;
+    overflow: hidden; /* Wichtig für die Partikelanimation */
+    background-color: #1a202c; /* Hintergrundfarbe, falls Partikel nicht laden */
+    color: #fff; /* Sicherstellen, dass Text weiß ist */
+    padding-top: 80px; /* Platz für den fixierten Header */
+}
+
+/* Styling für Partikel-Hintergrund */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Unter dem Hero-Inhalt */
+}
+
+/* Styling für Hero-Inhalt über Partikeln */
+.hero-content {
+    position: relative; /* Wichtig, um über den Partikeln zu liegen */
+    z-index: 2; /* Über den Partikeln */
+    padding-top: 0; /* Kein zusätzlicher Padding-Top, da Header fixed ist */
+    width: 100%; /* Stellt sicher, dass der Container die volle Breite nutzt */
+}
+
+.hero h1 {
+    font-size: 4.5em; /* Sehr große Überschrift */
+    color: #fff; /* Weiße Farbe */
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 184, 212, 0.6); /* Leichter Türkis/Cyan Glüheffekt */
+}
+
+.hero .slogan {
+    font-size: 1.8em;
+    color: #e0e0e0; /* Hellgrau */
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.btn {
+    display: inline-block; /* Für Padding und Margin */
+    background-color: #00B8D4; /* Türkis/Cyan Button */
+    color: #fff; /* Weiße Schrift */
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none; /* Unterstreichung entfernen */
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Sanfter Übergang */
+    border: none; /* Kein Rahmen */
+    cursor: pointer; /* Mauszeiger als Hand */
+}
+
+.btn-primary:hover {
+    background-color: #00D1EF; /* Etwas helleres Türkis/Cyan beim Hover */
+    transform: translateY(-3px); /* Leichter Hoch-Effekt beim Hover */
+    box-shadow: 0 5px 15px rgba(0, 184, 212, 0.4); /* Schatten beim Hover */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #00B8D4;
+    border: 1px solid #00B8D4;
+}
+
+.btn-secondary:hover {
+    background-color: #00B8D4;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 184, 212, 0.3);
+}
+
+/* News Ticker Styling */
+.news-ticker-section {
+    background-color: #111; /* Dunkler Hintergrund */
+    padding: 15px 0;
+    overflow: hidden; /* Wichtig für den Lauftext */
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+    border-bottom: 2px solid #00B8D4; /* Türkis/Cyan Linie unten */
+    position: sticky;
+    top: 80px; /* Positioniert direkt unter dem fixierten Header */
+    z-index: 999; /* Unter dem Header, aber über dem Rest */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.news-ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.news-ticker {
+    display: inline-block; /* Wichtig für das Scrollen */
+    animation: marquee 60s linear infinite; /* Animation auf 60s für flüssigeres Scrollen */
+    padding-left: 100%; /* Startet außerhalb des Bildschirms */
+    font-size: 1.1em;
+}
+
+.news-ticker:hover {
+    animation-play-state: paused; /* Pause beim Hover */
+}
+
+.news-ticker span {
+    color: #00B8D4; /* Farbe für "LATEST NEWS:" */
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.news-ticker a {
+    color: #e0e0e0; /* Farbe der News-Links */
+    text-decoration: none;
+    margin-right: 30px; /* Abstand zwischen den News-Links */
+    transition: color 0.2s ease;
+}
+
+.news-ticker a:hover {
+    color: #fff; /* Weiße Farbe beim Hover */
+}
+
+/* Animation Keyframes für den Lauftext */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); } /* Bewegt den Text nach links */
+}
+
+/* Kategorien-Übersicht Styling */
+.categories-overview {
+    padding: 60px 0; /* Innenabstand oben und unten, reduziert */
+    text-align: center; /* Text zentrieren */
+}
+
+.categories-overview h2 {
+    font-size: 2.8em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.categories-overview .section-description {
+    font-size: 1.1em;
+    color: #bbb;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.category-grid {
+    display: grid; /* Erstellt ein Raster */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Spalten */
+    gap: 40px; /* Abstand zwischen den Karten */
+    margin-top: 50px;
+}
+
+.category-card {
+    background-color: #2a303c; /* Dunklerer Hintergrund für die Karten */
+    border-radius: 10px;
+    overflow: hidden; /* Stellt sicher, dass das Bild innerhalb der Karte bleibt */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Schatten für die Karten */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Sanfter Übergang beim Hover */
+    display: flex; /* Flexbox für Inhalt innerhalb der Karte */
+    flex-direction: column; /* Inhalt untereinander */
+}
+
+.category-card:hover {
+    transform: translateY(-10px); /* Karte fährt leicht hoch beim Hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Größerer Schatten beim Hover */
+}
+
+.category-card .category-img {
+    width: 100%; /* Bild nimmt volle Breite der Karte ein */
+    height: 200px; /* Feste Höhe für die Bilder */
+    object-fit: cover; /* Bildausschnitt anpassen */
+    border-bottom: 2px solid #00B8D4; /* Türkis/Cyan Linie unter dem Bild */
+}
+
+.category-card h3 {
+    font-size: 1.6em;
+    color: #fff;
+    margin: 25px 0 15px;
+    padding: 0 20px;
+}
+
+.category-card p {
+    color: #bbb;
+    font-size: 1em;
+    padding: 0 20px;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Lässt den Text den verfügbaren Platz ausfüllen */
+}
+
+.category-card .btn-secondary {
+    background-color: #333; /* Dunklerer Button für Sekundäraktion */
+    color: #00B8D4; /* Türkis/Cyan Schrift */
+    border: 1px solid #00B8D4; /* Türkis/Cyan Rahmen */
+    padding: 12px 25px;
+    font-size: 1em;
+    margin-bottom: 20px; /* Abstand nach unten */
+    margin-left: auto; /* Button zentrieren in der Karte */
+    margin-right: auto;
+}
+
+.category-card .btn-secondary:hover {
+    background-color: #00B8D4; /* Beim Hover wird er Türkis/Cyan */
+    color: #fff; /* Und Schrift weiß */
+    transform: translateY(-2px); /* Leichter Hover-Effekt */
+    box-shadow: 0 3px 10px rgba(0, 184, 212, 0.3);
+}
+
+/* Styling für "Coming Soon" Karten */
+.category-card.coming-soon-card {
+    background-color: #21252d; /* Etwas dunklerer Hintergrund */
+    opacity: 0.7; /* Leicht durchsichtiger */
+    position: relative;
+    overflow: hidden;
+    cursor: default; /* Mauszeiger bleibt normal */
+}
+
+.category-card.coming-soon-card:hover {
+    transform: none; /* Kein Hover-Effekt */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Normaler Schatten */
+}
+
+.coming-soon-badge {
+    background-color: #00B8D4; /* Türkis/Cyan Hintergrund */
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Al-Driven Markets & Coin Teaser Styling */
+.ai-markets-teaser {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #2a303c; /* Dunkler Hintergrund für diesen Abschnitt */
+}
+
+.ai-markets-teaser .ai-markets-content {
+    display: flex; /* Inhalt nebeneinander */
+    align-items: center;
+    gap: 60px; /* Abstand zwischen Text und Bild */
+    margin-bottom: 60px;
+    flex-wrap: wrap; /* Zeilenumbruch auf kleinen Bildschirmen */
+    justify-content: center; /* Zentriert die Elemente beim Umbruch */
+}
+
+.ai-markets-teaser .ai-markets-text {
+    flex: 1; /* Nimmt den verfügbaren Platz ein */
+    min-width: 300px; /* Mindestbreite, bevor es umbricht */
+    text-align: left; /* Text linksbündig */
+}
+
+.ai-markets-teaser h2 {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.ai-markets-teaser p {
+    font-size: 1.1em;
+    color: #bbb;
+    margin-bottom: 30px;
+}
+
+.ai-markets-teaser .ai-markets-image {
+    flex: 0 0 400px; /* Feste Breite von 400px, kein Flex-Wachstum */
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.ai-markets-teaser .market-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.countdown-section {
+    margin-top: 50px;
+    background-color: #111;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-section h3 {
+    font-size: 1.8em;
+    color: #00B8D4; /* Türkis/Cyan */
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.countdown-timer {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 184, 212, 0.6); /* Türkis/Cyan Glüheffekt */
+}
+
+/* NEU: Styles für zwei Countdowns auf der AI-Driven Markets Seite */
+.countdown-section-two-timers {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Abstand zwischen den Countdown-Karten */
+    flex-wrap: wrap; /* Umbruch auf kleineren Bildschirmen */
+    margin-top: 30px; /* Etwas weniger Abstand nach oben */
+    align-items: stretch; /* Wichtig: Sorgt dafür, dass die Karten die gleiche Höhe haben */
+}
+
+.countdown-card {
+    background-color: #2a303c; /* Dunkler Hintergrund, ähnlich Category Card */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 450px; /* Maximale Breite pro Karte */
+    flex: 1; /* Flexibel, um den Raum aufzuteilen */
+    min-width: 280px; /* Mindestbreite, bevor es umbricht */
+    display: flex; /* Inhalt der Karte als Flexbox */
+    flex-direction: column; /* Inhalt untereinander */
+    justify-content: space-between; /* Space zwischen Titel, Text, Countdown */
+}
+
+.countdown-card h3 {
+    font-size: 1.8em;
+    color: #00B8D4;
+    margin-bottom: 15px; /* Etwas weniger Abstand */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.countdown-card p {
+    font-size: 1em;
+    color: #bbb;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Text kann wachsen */
+}
+
+.countdown-timer-small {
+    font-size: 2.5em; /* Kleinerer Countdown-Text */
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(0, 184, 212, 0.5);
+    margin-top: auto; /* Sorgt dafür, dass der Countdown unten ausgerichtet ist */
+}
+
+.countdown-date-info {
+    font-size: 0.9em !important; /* Wichtiger, um Standard-p-Styles zu überschreiben */
+    color: #888 !important;
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+
+/* Newsletter Sign-up Styling */
+.newsletter-signup {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #1a202c; /* Hintergrund vom Body */
+}
+
+.newsletter-signup h2 {
+    font-size: 2.8em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.newsletter-signup p {
+    font-size: 1.1em;
+    color: #bbb;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Umbruch auf kleinen Bildschirmen */
+}
+
+.newsletter-form input[type="email"] {
+    padding: 15px 20px;
+    border: 1px solid #00B8D4; /* Türkis/Cyan Rahmen */
+    border-radius: 5px;
+    background-color: #2a303c; /* Dunkleres Feld */
+    color: #e0e0e0; /* Helle Schrift */
+    font-size: 1.1em;
+    width: 350px; /* Feste Breite */
+    max-width: 90%; /* Max. 90% Breite auf kleinen Bildschirmen */
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: #888; /* Farbe für den Platzhaltertext */
+}
+
+.newsletter-form .btn-primary {
+    margin-top: 0; /* Entfernt oberen Abstand, falls vorhanden */
+}
+
+/* Footer Styling */
+.main-footer {
+    background-color: #111; /* Dunkler Hintergrund */
+    padding: 40px 0;
+    text-align: center;
+    color: #bbb; /* Hellerer Text */
+    font-size: 0.9em;
+}
+
+.main-footer p {
+    margin-bottom: 15px;
+}
+
+.main-footer .footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.main-footer .footer-links a:hover {
+    color: #00B8D4; /* Türkis/Cyan */
+}
+
+.main-footer .social-links {
+    margin-top: 20px;
+}
+
+.main-footer .social-links a {
+    color: #bbb;
+    font-size: 1.5em;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-footer .social-links a:hover {
+    color: #00B8D4; /* Türkis/Cyan */
+}
+
+/* Chatbot Widget Styling (fixed am unteren rechten Rand) */
+.chatbot-widget {
+    position: fixed; /* Bleibt beim Scrollen an einer festen Position */
+    bottom: 30px; /* 30px vom unteren Rand */
+    right: 30px; /* 30px vom rechten Rand */
+    background-color: #00B8D4; /* Türkis/Cyan Hintergrundfarbe des Widgets */
+    color: #fff;
+    width: 60px; /* Breite */
+    height: 60px; /* Höhe */
+    border-radius: 50%; /* Rund */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em; /* Font Awesome Icon Größe */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Schatten */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 2000; /* Stellt sicher, dass es über allem liegt */
+}
+
+.chatbot-widget:hover {
+    background-color: #00D1EF; /* Etwas helleres Türkis/Cyan beim Hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Chatbot Popup Styling */
+.chatbot-popup {
+    position: fixed;
+    bottom: 100px; /* Über dem Icon */
+    right: 20px;
+    width: 380px; /* Breite des Popups */
+    height: 500px; /* Höhe des Popups */
+    background-color: #2a303c; /* Hintergrundfarbe */
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1999; /* Unter dem Icon, aber über dem Rest der Seite */
+    transform: translateY(20px); /* Startposition leicht nach unten versetzt */
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.chatbot-popup.active {
+    transform: translateY(0); /* Fährt nach oben beim Aktivieren */
+    opacity: 1; /* Sichtbar */
+    visibility: visible; /* Sichtbar */
+}
+
+.chatbot-header {
+    background-color: #111; /* Dunklerer Header des Popups */
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #00B8D4; /* Türkis/Cyan Linie */
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #00B8D4; /* Türkis/Cyan Titel */
+}
+
+.chatbot-header .close-btn {
+    font-size: 1.8em;
+    cursor: pointer;
+    color: #e0e0e0;
+    transition: color 0.2s ease;
+}
+
+.chatbot-header .close-btn:hover {
+    color: #fff;
+}
+
+.chatbot-body {
+    flex-grow: 1; /* Nimmt den restlichen Platz ein */
+    padding: 0; /* Innenabstand im Body entfernt, damit iFrame vollen Platz hat */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling für die Unterseite: page-hero */
+.page-hero {
+    background-color: #1a202c; /* Hintergrundfarbe */
+    padding: 100px 0 60px; /* Mehr Polsterung oben, weniger unten */
+    text-align: center;
+    color: #fff;
+    margin-top: 80px; /* Abstand zum fixed Header */
+}
+
+.page-hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: #00B8D4; /* Türkis/Cyan */
+}
+
+.page-hero p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e0e0e0;
+}
+
+/* Content Section Allgemeine Anpassung */
+.content-section {
+    padding: 80px 0; /* Etwas mehr vertikaler Abstand */
+}
+
+.content-section h2 {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Filter & Sortier Bereich */
+.filter-sort-section {
+    background-color: #2a303c;
+    padding: 30px 0;
+    border-bottom: 1px solid #3a404c;
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Umbruch auf kleinen Bildschirmen */
+    gap: 20px;
+}
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px 12px 40px; /* Platz für Icon */
+    border: 1px solid #00B8D4;
+    border-radius: 5px;
+    background-color: #1a202c;
+    color: #e0e0e0;
+    font-size: 1em;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00B8D4;
+}
+
+.filter-dropdowns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Dropdowns rechts ausrichten */
+}
+
+.filter-select {
+    padding: 10px 15px;
+    border: 1px solid #00B8D4;
+    border-radius: 5px;
+    background-color: #1a202c;
+    color: #e0e0e0;
+    font-size: 1em;
+    appearance: none; /* Entfernt Standard-Dropdown-Pfeil */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300B8D4'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Eigener Pfeil */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    cursor: pointer;
+}
+
+/* Tool Vergleichs-Grid */
+.tool-comparison-grid {
+    padding: 80px 0;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 3-spaltig auf größeren Bildschirmen */
+    gap: 40px;
+}
+
+.tool-card {
+    background-color: #2a303c;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    padding: 25px; /* Innenabstand für Inhalt */
+    padding-top: 60px; /* Zusätzlicher Platz für Actions oben */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Wichtig für absolut positionierte Elemente */
+}
+
+.tool-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* NEU: Container für Badges (links oben) */
+.tool-badges-left {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    z-index: 5;
+    display: flex; /* Falls mehrere Badges nebeneinander */
+    gap: 10px;
+}
+
+/* NEU: Container für Compare-Checkbox (rechts oben) */
+.tool-compare-right {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 5;
+}
+
+/* Tool Badges (Free, Open Source) */
+.tool-badge {
+    background-color: #00B8D4; /* Türkis/Cyan */
+    color: #fff;
+    font-size: 0.7em;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.tool-badge.open-source-badge {
+    background-color: #8BC34A; /* Grüner für Open Source */
+}
+
+.tool-badge.free-badge {
+    background-color: #4CAF50; /* Klassisches Grün für Free Tier */
+}
+
+/* Custom Checkbox Styling */
+.compare-checkbox-container {
+    display: inline-flex; /* Für korrekte Abstände und um flexibel zu sein */
+    align-items: center;
+    position: relative;
+    padding-left: 28px; /* Platz für den Checkmark */
+    cursor: pointer;
+    font-size: 0.9em;
+    user-select: none; /* Text nicht auswählbar */
+    color: #e0e0e0;
+    font-weight: 400;
+    white-space: nowrap; /* "Compare" und Checkbox bleiben in einer Zeile */
+}
+
+/* Checkbox verstecken */
+.compare-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Den Checkmark-Bereich erstellen (das sichtbare Quadrat) */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #333;
+    border: 1px solid #00B8D4; /* Türkis/Cyan Rahmen */
+    border-radius: 4px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Checkmark-Hintergrund, wenn Checkbox gechecked ist */
+.compare-checkbox-container input:checked ~ .checkmark {
+    background-color: #00B8D4; /* Türkis/Cyan Hintergrund */
+    border-color: #00B8D4;
+}
+
+/* Checkmark-Haken erstellen (der Strich) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Checkmark-Haken anzeigen, wenn gechecked */
+.compare-checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Stil des Hakens - Angepasst für bessere Sichtbarkeit */
+.compare-checkbox-container .checkmark:after {
+    left: 7px; /* Position des Hakens im Quadrat */
+    top: 3px; /* Position des Hakens im Quadrat */
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.tool-card .tool-logo {
+    width: 80px; /* Größe des Logos */
+    height: 80px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin: 0 auto 20px auto; /* Zentriert das Logo und schafft Abstand */
+    border: 2px solid #00B8D4;
+    display: block; /* Für Margin auto */
+}
+
+.tool-card .tool-header {
+    display: flex;
+    flex-direction: column; /* Titel und ggf. Rating untereinander */
+    align-items: center; /* Zentriert den Titel im Header */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.tool-card h3 {
+    font-size: 1.8em;
+    color: #fff;
+    margin: 0 0 10px 0; /* Abstand unter dem Titel */
+    flex-shrink: 1;
+    min-width: 0;
+    line-height: 1.2;
+}
+
+.tool-card .tool-description {
+    font-size: 1em;
+    color: #bbb;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    text-align: left; /* Beschreibung linksbündig */
+}
+
+.tool-card .tool-features {
+    list-style: none;
+    margin-bottom: 20px;
+    padding-left: 0; /* Liste hat keinen Standard-Padding */
+}
+
+.tool-card .tool-features li {
+    font-size: 0.95em;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+    display: flex; /* Für Icon und Text nebeneinander */
+    align-items: flex-start; /* Icons oben ausrichten, falls Text mehrzeilig */
+}
+
+.tool-card .tool-features li .fas {
+    margin-right: 10px;
+    color: #00B8D4; /* Haken/Kreuz-Icon Farbe */
+    flex-shrink: 0; /* Icon schrumpft nicht */
+    margin-top: 2px; /* Kleine vertikale Ausrichtung */
+}
+
+.tool-card .tool-features li .fa-times-circle {
+    color: #FF6347; /* Rote Farbe für "nicht verfügbar" */
+}
+
+.tool-card .tool-price {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    text-align: center; /* Preis zentrieren */
+}
+
+.tool-card .btn-primary,
+.tool-card .btn-secondary {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.tool-card .btn-secondary {
+    background-color: transparent;
+    color: #00B8D4;
+    border: 1px solid #00B8D4;
+}
+
+.tool-card .btn-secondary:hover {
+    background-color: #00B8D4;
+    color: #fff;
+}
+
+/* Pagination Styling */
+.pagination {
+    margin-top: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #2a303c;
+    color: #e0e0e0;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover,
+.pagination a.active {
+    background-color: #00B8D4;
+    color: #fff;
+}
+
+.pagination span {
+    color: #e0e0e0;
+    margin: 0 5px;
+}
+
+/* Vergleichs-Popup Styling */
+.compare-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh; /* Maximale Höhe */
+    background-color: #1a202c; /* Dunkler Hintergrund */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 2001; /* Über allem anderen */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.compare-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.compare-header {
+    background-color: #111;
+    color: #fff;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #00B8D4;
+}
+
+.compare-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #00B8D4;
+}
+
+.close-compare-btn {
+    font-size: 2em;
+    cursor: pointer;
+    color: #e0e0e0;
+    transition: color 0.2s ease;
+}
+
+.close-compare-btn:hover {
+    color: #fff;
+}
+
+.compare-body {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Scrollbar, wenn Inhalt zu lang */
+    color: #e0e0e0;
+}
+
+.compare-body .no-tools-selected {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2em;
+    color: #bbb;
+}
+
+.comparison-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2-3 Spalten für Vergleich */
+    gap: 20px;
+}
+
+.comparison-card {
+    background-color: #2a303c;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.comparison-card .comp-tool-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    border: 1px solid #00B8D4;
+    display: block;
+}
+
+.comparison-card h4 {
+    font-size: 1.4em;
+    color: #00B8D4;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.comparison-card .comp-tool-description {
+    font-size: 0.95em;
+    color: #bbb;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.comparison-card .comp-tool-features {
+    list-style: none;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.comparison-card .comp-tool-features li {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+    color: #e0e0e0;
+}
+
+.comparison-card .comp-tool-features li .fas {
+    margin-right: 8px;
+    color: #00B8D4;
+    flex-shrink: 0;
+}
+
+.comparison-card .comp-tool-features li .fa-times-circle {
+    color: #FF6347;
+}
+
+.comparison-card .tool-price {
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.comparison-card .btn-primary,
+.comparison-card .btn-secondary {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.comparison-card .btn-secondary {
+    background-color: transparent;
+    color: #00B8D4;
+    border: 1px solid #00B8D4;
+}
+
+.comparison-card .btn-secondary:hover {
+    background-color: #00B8D4;
+    color: #fff;
+}
+
+/* Floatender "Compare Selected" Button */
+.btn-compare-float {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00B8D4;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 30px; /* Abgerundeteres Aussehen */
+    font-size: 1.1em;
+    font-weight: 700;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+    z-index: 1500; /* Zwischen Chatbot und Popups */
+    display: none; /* Anfangs versteckt */
+}
+
+.btn-compare-float.active {
+    display: block; /* Sichtbar, wenn Tools ausgewählt sind */
+}
+
+.btn-compare-float:hover {
+    background-color: #00D1EF;
+    transform: translateX(-50%) translateY(-3px);
+}
+
+.btn-compare-float #selected-count {
+    margin-left: 5px;
+}
+
+/* --- ZUSÄTZLICHE STYLES FÜR ABOUT US SEITE (ROADMAP, FAQ, KONTAKTFORMULAR) --- */
+/* Roadmap Section Styling */
+.roadmap-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Spalten */
+    gap: 30px; /* Abstand zwischen den Roadmap-Items */
+    margin-top: 40px;
+    margin-bottom: 60px;
+    position: relative; /* Für eventuelle absolute Positionierung der Timeline-Linie */
+}
+
+.roadmap-item {
+    background-color: #2a303c; /* Dunklerer Hintergrund, ähnlich Category Card */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Inhalt oben ausrichten */
+    position: relative; /* Für das Meilenstein-Datum-Badge */
+    padding-top: 60px; /* Platz für Datum-Badge oben */
+}
+
+.roadmap-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.roadmap-item h3 {
+    color: #fff; /* Haupttitel des Meilensteins weiß */
+    font-size: 2em; /* Größere Schrift für den Haupttitel des Meilensteins */
+    margin-bottom: 10px;
+    line-height: 1.2;
+    padding-left: 0; /* Keine Einrückung für Icon */
+    border-bottom: none; /* Keine Linie hier */
+}
+
+.roadmap-item .date-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #00B8D4; /* Türkis/Cyan */
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Anpassung der Listen innerhalb der Roadmap-Items */
+.roadmap-item ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px; /* Etwas mehr Abstand */
+    flex-grow: 1;
+}
+
+.roadmap-item ul li {
+    color: #bbb; /* Etwas hellerer Text für Details */
+    margin-bottom: 8px; /* Weniger Abstand zwischen den Punkten */
+    padding-left: 25px; /* Platz für das Häkchen */
+    position: relative;
+    font-size: 0.95em; /* Etwas kleiner für Details */
+}
+
+.roadmap-item ul li::before {
+    content: '\f00c'; /* Font Awesome Checkmark (solid) */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #4CAF50; /* Grüner für Checkmarks */
+    font-size: 0.9em;
+    position: absolute;
+    left: 0;
+    top: 2px; /* Vertikale Ausrichtung anpassen */
+}
+
+/* FAQ Section Styling */
+.faq-section {
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.faq-item {
+    background-color: #2a303c;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Für den Übergang beim Ausklappen */
+}
+
+.faq-question {
+    padding: 20px 25px;
+    font-size: 1.2em;
+    color: #00B8D4; /* Türkis/Cyan */
+    cursor: pointer;
+    display: block; /* Stellt sicher, dass das gesamte Summary klickbar ist */
+    position: relative;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #3a404c;
+}
+
+/* Pfeil-Icon für das Ausklappen */
+.faq-question::after {
+    content: '\25BC'; /* Nach unten zeigendes Dreieck */
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s ease;
+    color: #e0e0e0;
+}
+
+.faq-item[open] .faq-question::after {
+    transform: translateY(-50%) rotate(180deg); /* Nach oben drehen, wenn geöffnet */
+}
+
+.faq-answer {
+    padding: 0 25px 20px; /* Padding für den Inhalt */
+    color: #bbb;
+    font-size: 1em;
+    line-height: 1.8;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Sanfter Übergang */
+}
+
+.faq-item[open] .faq-answer {
+    max-height: 500px; /* Genügend Höhe, um den Inhalt anzuzeigen */
+    padding: 20px 25px; /* Gewünschtes Padding, wenn geöffnet */
+}
+
+.faq-answer p {
+    margin-bottom: 10px;
+}
+
+.faq-answer a {
+    color: #00B8D4;
+    text-decoration: none;
+}
+
+.faq-answer a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    background-color: #2a303c;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    max-width: 700px;
+    margin: 40px auto 80px auto; /* Zentrieren und Abstand */
+    text-align: left; /* Formularfelder linksbündig */
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 2.2em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e0e0e0;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select { /* NEU: Für Select-Elemente wie im Review-Formular */
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #00B8D4;
+    border-radius: 5px;
+    background-color: #1a202c; /* Hintergrund passend zum Body */
+    color: #e0e0e0;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #00D1EF;
+    box-shadow: 0 0 0 3px rgba(0, 184, 212, 0.3);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical; /* Nur vertikal skalierbar */
+    min-height: 120px;
+}
+
+.contact-form .btn-primary {
+    width: auto; /* Button nimmt nicht die volle Breite ein */
+    padding: 15px 40px;
+    display: block; /* Als Block, um margin auto nutzen zu können */
+    margin: 30px auto 0 auto; /* Zentriert den Button */
+}
+
+/* News List Page Styling */
+.news-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.news-card {
+    background-color: #2a303c;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.news-card h3 {
+    font-size: 1.5em;
+    color: #00B8D4;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.news-card h3 a {
+    color: #00B8D4;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.news-card h3 a:hover {
+    color: #fff;
+}
+
+.news-card .news-meta {
+    font-size: 0.85em;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.news-comments-placeholder {
+    font-size: 0.9em;
+    color: #888;
+    border-top: 1px solid #3a404c;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+/* NEU: Tool Info Popup Styling */
+.tool-info-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px; /* Breite des Popups */
+    max-height: 90vh;
+    background-color: #2a303c; /* Hintergrundfarbe */
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 2002; /* Über allen anderen Popups */
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.tool-info-popup.active {
+    transform: translateY(-50%) translateX(-50%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.tool-info-header {
+    background-color: #111;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #00B8D4;
+    position: relative; /* Für das close-btn */
+}
+
+.tool-info-header .tool-info-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #00B8D4;
+}
+
+.tool-info-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #00B8D4;
+    flex-grow: 1; /* Nimmt restlichen Platz ein */
+}
+
+.tool-info-header .close-btn {
+    font-size: 2em;
+    cursor: pointer;
+    color: #e0e0e0;
+    transition: color 0.2s ease;
+    position: absolute; /* Absolut positionieren, damit es immer rechts oben ist */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tool-info-header .close-btn:hover {
+    color: #fff;
+}
+
+.tool-info-body {
+    flex-grow: 1;
+    padding: 25px;
+    overflow-y: auto;
+    color: #e0e0e0;
+}
+
+.tool-info-body p {
+    margin-bottom: 10px;
+    display: flex; /* Für Label und Wert nebeneinander */
+    align-items: flex-start;
+    font-size: 1em;
+}
+
+.tool-info-body strong.label {
+    color: #00B8D4; /* Label in Türkis/Cyan */
+    min-width: 150px; /* Feste Breite für Labels */
+    margin-right: 15px;
+    flex-shrink: 0; /* Verhindert Schrumpfen des Labels */
+}
+
+.tool-info-body span {
+    color: #fff;
+    font-weight: normal;
+    flex-grow: 1; /* Nimmt restlichen Platz ein */
+}
+
+/* NEU: Styles für Preis und Features im Tool Info Popup */
+.tool-info-body .popup-tool-price {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px; /* Abstand zu Features */
+    text-align: center;
+    border-bottom: 1px solid #3a404c;
+    padding-bottom: 15px;
+}
+
+.tool-info-body .popup-tool-features {
+    list-style: none;
+    margin-bottom: 20px;
+    padding-left: 0;
+    border-bottom: 1px solid #3a404c;
+    padding-bottom: 20px;
+}
+
+.tool-info-body .popup-tool-features li {
+    font-size: 0.95em;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.tool-info-body .popup-tool-features li .fas {
+    margin-right: 10px;
+    color: #00B8D4;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.tool-company-details {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #3a404c;
+}
+
+.tool-company-details h4 {
+    font-size: 1.4em;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.tool-info-body .btn-primary {
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* NEU: Tokenomics Sektion für Coin-Seite */
+.tokenomics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    text-align: center; /* Zentrierung des Inhalts */
+}
+
+.tokenomics-item {
+    background-color: #2a303c;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriert Inhalt vertikal */
+    justify-content: center; /* Zentriert Inhalt horizontal */
+    text-align: center;
+}
+
+.tokenomics-item h3 {
+    font-size: 2em;
+    color: #00B8D4;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.tokenomics-item p {
+    color: #bbb;
+    font-size: 1em;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.tokenomics-item .chart-placeholder {
+    width: 180px; /* Größe des Kreisdiagramm-Platzhalters */
+    height: 180px;
+    background-color: #1a202c; /* Dunkler Kreis */
+    border: 3px solid #00B8D4;
+    border-radius: 50%;
+    background-image: conic-gradient(
+        #00B8D4 0% 5%, /* Team & Advisory 5% */
+        #008C9E 5% 25%, /* Community & Staking 20% */
+        #005F6E 25% 60%, /* Development & Marketing 35% */
+        #1A202C 60% 100% /* Liquidity & DEX Listings 40% (Hintergrundfarbe für den Rest des Kreises) */
+    );
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Innerer Schatten */
+}
+
+.chart-legend {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left; /* Legende linksbündig */
+    width: 100%; /* Volle Breite im Container */
+    max-width: 200px; /* Maximale Breite für Legende */
+}
+
+.chart-legend li {
+    font-size: 0.9em;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin: 20px auto; /* Zentrieren */
+}
+.tokenomics-item .image-placeholder {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 20px auto;
+    display: block;
+}
+
+
+/* --- Responsive Anpassungen (für kleinere Bildschirme) --- */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #111;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    }
+    .nav-links.active {
+    display: flex;
+    }
+    .nav-links li {
+        margin: 10px 0;
+}
+    .menu-toggle {
+    display: flex;
+    }
+    .hero h1 {
+        font-size: 3em;
+    }
+    .hero .slogan {
+        font-size: 1.4em;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+    .news-ticker-section {
+        padding: 10px 0;
+        top: 60px; /* Anpassung für mobile Header-Höhe */
+}
+    .news-ticker {
+        font-size: 0.9em;
+        animation-duration: 45s; /* Längere Dauer für langsameren Scroll */
+    }
+    .categories-overview {
+        padding: 50px 0;
+    }
+    .category-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+        gap: 30px;
+    }
+    .category-card {
+        margin-bottom: 0;
+    }
+    .ai-markets-teaser .ai-markets-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .ai-markets-teaser .ai-markets-text {
+        text-align: center;
+}
+    .ai-markets-teaser .ai-markets-image {
+        flex: 0 0 auto;
+    width: 100%;
+    }
+    .countdown-section h3 {
+        font-size: 1.5em;
+}
+    .countdown-timer {
+        font-size: 2.5em;
+}
+    .countdown-section-two-timers {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .countdown-card {
+        min-width: unset; /* Auf Mobil flexibler */
+        max-width: 100%;
+    }
+    .newsletter-form {
+        flex-direction: column;
+    align-items: center;
+    }
+    .newsletter-form input[type="email"] {
+        width: 90%;
+    }
+    .chatbot-popup {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        bottom: 90px;
+        height: 450px;
+    }
+    /* Responsive Anpassungen für die Vergleichsseite */
+    .page-hero {
+        padding: 80px 0 40px;
+        margin-top: 60px;
+}
+    .page-hero h1 {
+        font-size: 2.5em;
+    }
+    .page-hero p {
+        font-size: 1em;
+    }
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box {
+        max-width: 100%;
+    }
+    .filter-dropdowns {
+        justify-content: stretch;
+        width: 100%;
+    }
+    .filter-select {
+        flex-grow: 1;
+    }
+    .tool-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .compare-popup {
+        width: calc(100% - 40px);
+        height: 80vh;
+    }
+    .comparison-details-grid {
+        grid-template-columns: 1fr; /* Eine Spalte auf mobilen Geräten */
+    }
+    .btn-compare-float {
+        font-size: 1em;
+        padding: 12px 20px;
+        bottom: 20px;
+}
+    /* Anpassungen für Content-Seiten auf Mobilgeräten */
+    .content-section {
+        padding: 40px 0;
+    }
+    .content-section h2 {
+        font-size: 2em;
+    }
+    .content-section h3 {
+        font-size: 1.5em;
+    }
+    /* Roadmap Responsive Anpassungen */
+    .roadmap-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    /* FAQ Responsive Anpassungen */
+    .faq-question {
+        font-size: 1em;
+        padding: 15px 20px;
+    }
+    .faq-question::after {
+        right: 15px;
+    }
+    .faq-answer {
+        padding: 10px 20px 20px;
+    }
+    /* Contact Form Responsive Anpassungen */
+    .contact-form {
+        padding: 25px;
+    }
+    /* Tool Info Popup Responsive */
+    .tool-info-popup {
+        width: calc(100% - 40px);
+        height: 80vh;
+    }
+    .tool-info-header h3 {
+        font-size: 1.2em;
+    }
+    .tool-info-body p {
+        flex-direction: column; /* Label und Wert untereinander */
+        align-items: flex-start;
+}
+    .tool-info-body strong.label {
+        min-width: auto;
+        margin-right: 0;
+        margin-bottom: 5px; /* Abstand zwischen Label und Wert */
+    }
+    .tool-info-header .close-btn {
+        font-size: 1.5em;
+        right: 10px;
+    }
+
+    /* Tokenomics Responsive */
+    .tokenomics-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+}
+}
+
+@media (max-width: 600px) {
+    .ai-markets-table th, .ai-markets-table td { /* Diese sollten jetzt irrelevant sein, da Tabelle entfernt ist */
+        padding: 10px 5px;
+        font-size: 0.8em;
+    }
+    .chatbot-widget {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8em;
+}
+}/* --- Responsive Anpassungen (für kleinere Bildschirme) --- */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #111;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .hero h1 {
+        font-size: 3em;
+    }
+    .hero .slogan {
+        font-size: 1.4em;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+    .news-ticker-section {
+        padding: 10px 0;
+        top: 60px; /* Anpassung für mobile Header-Höhe */
+    }
+    .news-ticker {
+        font-size: 0.9em;
+        animation-duration: 45s; /* Längere Dauer für langsameren Scroll */
+    }
+    .categories-overview {
+        padding: 50px 0;
+    }
+    .category-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+        gap: 30px;
+    }
+    .category-card {
+        margin-bottom: 0;
+    }
+    .ai-markets-teaser .ai-markets-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .ai-markets-teaser .ai-markets-text {
+        text-align: center;
+    }
+    .ai-markets-teaser .ai-markets-image {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .countdown-section h3 {
+        font-size: 1.5em;
+    }
+    .countdown-timer {
+        font-size: 2.5em;
+    }
+    .countdown-section-two-timers {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .countdown-card {
+        min-width: unset; /* Auf Mobil flexibler */
+        max-width: 100%;
+    }
+    .countdown-card h3 { /* Anpassung für mobile Überschrift in Countdown-Karten */
+        font-size: 1.5em;
+    }
+    .countdown-card p { /* Anpassung für mobile Texte in Countdown-Karten */
+        font-size: 0.9em;
+    }
+    .countdown-timer-small { /* Anpassung für mobile Countdown-Timer-Größe */
+        font-size: 2em;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    .newsletter-form input[type="email"] {
+        width: 90%;
+    }
+    .chatbot-popup {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        bottom: 90px;
+        height: 450px;
+    }
+    /* Responsive Anpassungen für die Vergleichsseite */
+    .page-hero {
+        padding: 80px 0 40px;
+        margin-top: 60px;
+    }
+    .page-hero h1 {
+        font-size: 2.5em;
+    }
+    .page-hero p {
+        font-size: 1em;
+    }
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box {
+        max-width: 100%;
+    }
+    .filter-dropdowns {
+        justify-content: stretch;
+        width: 100%;
+    }
+    .filter-select {
+        flex-grow: 1;
+    }
+    .tool-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .compare-popup {
+        width: calc(100% - 40px);
+        height: 80vh;
+    }
+    .comparison-details-grid {
+        grid-template-columns: 1fr; /* Eine Spalte auf mobilen Geräten */
+    }
+    .btn-compare-float {
+        font-size: 1em;
+        padding: 12px 20px;
+        bottom: 20px;
+    }
+    /* Anpassungen für Content-Seiten auf Mobilgeräten */
+    .content-section {
+        padding: 40px 0;
+    }
+    .content-section h2 {
+        font-size: 2em;
+    }
+    .content-section h3 {
+        font-size: 1.5em;
+    }
+    /* Roadmap Responsive Anpassungen */
+    .roadmap-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    /* FAQ Responsive Anpassungen */
+    .faq-question {
+        font-size: 1em;
+        padding: 15px 20px;
+    }
+    .faq-question::after {
+        right: 15px;
+    }
+    .faq-answer {
+        padding: 10px 20px 20px;
+    }
+    /* Contact Form Responsive Anpassungen */
+    .contact-form {
+        padding: 25px;
+    }
+    /* Tool Info Popup Responsive */
+    .tool-info-popup {
+        width: calc(100% - 40px);
+        height: 80vh;
+    }
+    .tool-info-header h3 {
+        font-size: 1.2em;
+    }
+    .tool-info-body p {
+        flex-direction: column; /* Label und Wert untereinander */
+        align-items: flex-start;
+    }
+    .tool-info-body strong.label {
+        min-width: auto;
+        margin-right: 0;
+        margin-bottom: 5px; /* Abstand zwischen Label und Wert */
+    }
+    .tool-info-header .close-btn {
+        font-size: 1.5em;
+        right: 10px;
+    }
+
+    /* Tokenomics Responsive */
+    .tokenomics-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Diese sollten jetzt irrelevant sein, da Tabelle für AI-Driven Markets entfernt wurde */
+    /* .ai-markets-table th, .ai-markets-table td {
+        padding: 10px 5px;
+        font-size: 0.8em;
+    }
+    .ai-markets-table .asset-logo {
+        width: 25px;
+        height: 25px;
+    }
+    .ai-markets-table .asset-name-symbol strong {
+        font-size: 1em;
+    }
+    .ai-markets-table .asset-name-symbol small {
+        font-size: 0.7em;
+    }
+    .ai-markets-table .btn-buy, .ai-markets-table .btn-secondary {
+        padding: 6px 10px;
+        font-size: 0.7em;
+    } */
+    .chatbot-widget {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8em;
+    }
+}
