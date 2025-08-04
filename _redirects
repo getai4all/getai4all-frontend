@@ -1,0 +1,11 @@
+# Weiterleitung der alten WordPress-Startseite zur neuen Startseite
+# Fülle die alte URL aus deinem WordPress-System hier ein
+/wp-old-startseite/ /index.html 301
+# Weiterleitung eines alten WordPress-Beitrags zur neuen News-Seite
+/alter-wordpress-blogbeitrag/ /news.html 301
+# Weiterleitung einer alten WordPress-Seite zu der neuen Über-uns-Seite
+/ueber-uns-alt/ /about.html 301
+
+# Catch-all-Weiterleitung, die alle anderen alten URLs, die nicht
+# gelistet sind, auf die Startseite weiterleitet.
+/ /index.html 301
