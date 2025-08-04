@@ -1,5 +1,1 @@
-# Weiterleitung aller alten Seiten auf die Startseite
-/old-wordpress-url / 301
-
-# Catch-all-Weiterleitung für alle anderen 404-Seiten
-/ /index.html 404
+/* /    301
